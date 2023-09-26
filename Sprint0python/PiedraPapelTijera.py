@@ -1,18 +1,24 @@
 import random
+# Gardo as posibilidades nunha lista
 posibilidades = ["piedra", "papel", "tijera"]
 
 print("Bienvenid@ al juego de piedra papel tijera :)")
 nombre = input("Cual es tu nombre:")
+# Inicializo jugadas e partidasGanadas
 jugadas = 0
 partidasGanadas = 0
 
 while jugadas < 5:
+    # Pidolle o xogador que escriba a sua xogada
     JugadaJugador = input("Elige tu jugada(piedra, papel o tijera): ")
+    # Comprobo se o xogador eliguei a sua xogada e senon entrara nun while infinito hasta que responda
     while JugadaJugador != "piedra" and JugadaJugador != "papel" and JugadaJugador != "tijera":
         print("Porfavor eligue bien.")
         JugadaJugador = input("Elige tu jugada(piedra, papel o tijera): ")
 
+    # Eligo a xogada da maquina con un random.choice
     JugadaMaquina = random.choice(posibilidades)
+    # Comprobo todas as posibilidades e sinon é un empate sumolle 1 a jugadas e se gana sumolle a partidasGanadas
     if JugadaMaquina == JugadaJugador:
         print("- Empate, no se cuenta la jugada")
 
@@ -44,6 +50,7 @@ while jugadas < 5:
         partidasGanadas = partidasGanadas + 1
 
 print("El juego ha acabado.")
+# Comprobo que si as partidas ganadas son 3 ou mais dou unha respuesta e se son menos dou outra
 if partidasGanadas >= 3:
     print("Enhorabuena "+ nombre + ", has ganado. En total ganaste " + str(partidasGanadas) + " rondas de 5")
 else:
