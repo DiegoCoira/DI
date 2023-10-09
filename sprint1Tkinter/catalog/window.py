@@ -2,6 +2,7 @@ from tkinter import ttk
 import tkinter as tk
 from cell import CatalogCell
 from tkinter import messagebox
+from PIL import Image, ImageTk
 
 class MainWindow():
 
@@ -13,11 +14,11 @@ class MainWindow():
         root.title("MainWindow")
 
         self.cells = [
-            CatalogCell("BoyDinner", "catalog/data/edited/BoyDinner.jpg"),
-            CatalogCell("mi amigo dice", "catalog/data/edited/mi amigo dice.jpg"),
-            CatalogCell("Napoleon", "catalog/data/edited/Napoleon.jpg"),
-            CatalogCell("Tenemos", "catalog/data/edited/Tenemos.jpg"),
-            CatalogCell("We love we live we", "catalog/data/edited/We love we live we.jpg")
+            CatalogCell("BoyDinner", "catalog/data/unedited/BoyDinner.jpg"),
+            CatalogCell("mi amigo dice", "catalog/data/unedited/mi amigo dice.jpg"),
+            CatalogCell("Napoleon", "catalog/data/unedited/Napoleon.jpg"),
+            CatalogCell("Tenemos", "catalog/data/unedited/Tenemos.png"),
+            CatalogCell("We love we live we", "catalog/data/unedited/We love we live we.jpg")
         ]
 
         for i, cell in enumerate(self.cells):
