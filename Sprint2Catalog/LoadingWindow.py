@@ -1,7 +1,7 @@
 import tkinter as tk
 import threading
-import json  # Import the json module for working with JSON data
 from PIL import Image, ImageTk
+import requests
 
 class LoadingWindow:
     def __init__(self, root):
@@ -43,25 +43,19 @@ class LoadingWindow:
             self.progress = 0
 
         self.draw_progress_circle(self.progress)
-        self.root.after(5, self.update_progress_circle)
+        self.root.after(4, self.update_progress_circle)
 
 
 
     def fetch_json_data(self):
-        # Replace the file path with the actual path to your JSON file
-        file_path = "C:\\Users\\Alumno\\Desktop\\Desarrollo de interfaces\\DI\\Sprint2Catalog\\catalog.json"
+        response = request.get("https://raw.githubusercontent.com/DiegoCoira/DI/main/Sprint2ApiRest/catalog.json")
+        if response.status_code == 200:
+            json_data = response.json()
+            launch_main_window(json_data)
 
-        try:
-            with open(file_path, "r", encoding="utf-8") as json_file:
-                data = json.load(json_file)
+    
 
-                # Process the JSON data
-                for item in data:
-                    name = item.get("name")
-                    description = item.get("description")
-                    image_url = item.get("image_url")
-                    # You can add code to display the data in your Tkinter window
-
-        except FileNotFoundError as e:
-            print("File not found:", e)
-       
+    def launch_main_window(json_data):
+        root = tk.Tk()
+        app = MainWindow(root,json_data)
+        root.mainloop()

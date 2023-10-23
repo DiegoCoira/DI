@@ -74,7 +74,7 @@ def drawing(attempts):
         print("===============  ")
 
 # Reading the File and the lines with content
-archive = "palabras.txt"
+archive = "ExtraPython/palabras.txt"
 with open(archive, 'r', encoding='utf-8') as file:
     palabras = [line.strip() for line in file]
     LineasNonVacias = [linea for linea in palabras if linea.strip()]
