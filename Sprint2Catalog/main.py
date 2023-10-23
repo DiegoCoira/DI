@@ -1,12 +1,18 @@
 from window import MainWindow  # Import the MainWindow class from the "window" module
-from tkinter import ttk
 import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk
+from LoadingWindow import LoadingWindow
 
 # Check if this script is the main entry point
+def launch_main_window(json_data):
+    root = tk()
+    app = MainWindow(root, json_data)
+    root.mainloop()
+
 if __name__ == "__main__":
-    # Create the main application window
-    root = tk.Tk()  # Create a tkinter main window
-    app = MainWindow(root)  # Create an instance of the MainWindow class
-    root.mainloop()  # Start the tkinter main event loop to run the application
+    root = tk()
+    app = LoadingWindow(root)
+    root.mainloop()
+    if app.data_ready.is_set():  # Verifica si los datos están listos
+        launch_main_window(app.json_data)
