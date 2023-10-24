@@ -22,25 +22,29 @@ class MainWindow():
 
     
     def __init__(self, root, json_data):
-        root.title("MainWindow")
-        self.root = root
+      root.title("MainWindow")
+      self.root = root
 
-        self.cell_frame = tk.Frame(self.root)
-        self.cell_frame.grid(row=0, column=0, padx=10, pady=10)
+      self.cell_frame = tk.Frame(self.root)
+      self.cell_frame.grid(row=0, column=0, padx=10, pady=10)
 
-        self.cell_list = [] 
-        for i, data in enumerate(json_data):
-            name = data["name"] 
-            descripcion = data["description"]
-            url = data["image_url"]
-            imagen = self.load_image_from_url(url)
+      self.cell_list = [] 
+      for i, data in enumerate(json_data):
+          name = data["name"] 
+          descripcion = data["description"]
+          url = data["image_url"]
+          imagen = self.load_image_from_url(url)
 
-            cell = CatalogCell(name, descripcion, url, imagen) 
-            self.cell_list.append(cell)
+          cell = CatalogCell(name, descripcion, url, imagen) 
+          self.cell_list.append(cell)
 
-            label = Label(self.cell_frame, image=cell.imagen, text=name, compound=tk.BOTTOM)
-            label.grid(row=i, column=0, sticky="nsew")
-            label.bind("<Button-1>", lambda event, cell=cell: self.on_button_clicked(cell))
+          label = Label(self.cell_frame, image=cell.imagen, text=name, compound=tk.BOTTOM)
+          label.grid(row=i, column=0, sticky="nsew")
+          label.bind("<Button-1>", lambda event, cell=cell: self.on_button_clicked(cell))
 
-        for i in range(len(self.cell_list)):
-            self.cell_frame.grid_rowconfigure(i, weight=1)
+      for i in range(len(self.cell_list)):
+          self.cell_frame.grid_rowconfigure(i, weight=1)
+          x = (root.winfo_screenwidth() - root.winfo_reqwidth()) / 2 
+          y = (root.winfo_screenheight() - root.winfo_reqheight()) / 2
+          root.geometry(f"+{int(x)}+{int(y)}")
+

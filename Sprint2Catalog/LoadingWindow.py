@@ -6,13 +6,16 @@ from window import MainWindow
 
 class LoadingWindow:
     def __init__(self, root):
+    
         self.finished = False
         self.json_data = []
-        root.title("LoadingWindow")
+
         self.root = root
         self.root.title ("Cargando...")
-        self.root.geometry("170x120")
-        self.root.resizable(False, False)
+        
+        x = (root.winfo_screenwidth() - root.winfo_reqwidth()) / 2 
+        y = (root.winfo_screenheight() - root.winfo_reqheight()) / 2
+        root.geometry(f"+{int(x)}+{int(y)}")
 
         self.label = tk.Label(self.root, text="Cargando datos...", font=("Arial", 14))
         self.label.pack(side=tk.TOP, pady=18)
@@ -31,6 +34,7 @@ class LoadingWindow:
         self.thread = threading.Thread(target= self.fetch_json_data)
         self.thread.start()
         self.check_thread()
+
 
     def draw_progress_circle(self, progress):
         self.canvas.delete("progress")
