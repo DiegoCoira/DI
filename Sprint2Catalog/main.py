@@ -4,15 +4,13 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 from LoadingWindow import LoadingWindow
 
-# Check if this script is the main entry point
+
 def launch_main_window(json_data):
-    root = tk()
+    root = tk.Tk()
     app = MainWindow(root, json_data)
     root.mainloop()
 
 if __name__ == "__main__":
-    root = tk()
+    root = tk.Tk()
     app = LoadingWindow(root)
     root.mainloop()
-    if app.data_ready.is_set():  # Verifica si los datos están listos
-        launch_main_window(app.json_data)

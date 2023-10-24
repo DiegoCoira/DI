@@ -1,42 +1,46 @@
 # Import necessary modules and classes from tkinter, PIL, and your custom modules
-from tkinter import ttk
+from io import BytesIO
+from tkinter import Label, ttk
 import tkinter as tk
 from cell import CatalogCell
 from tkinter import messagebox
 from PIL import Image, ImageTk
 from detail_window import DetailWindow
+import requests
 
 # Define a class called MainWindow
 class MainWindow():
+    
+    def load_image_from_url(self, url):
+      response = requests.get(url)
+      img_data = Image.open(BytesIO(response.content))
+      img = ImageTk.PhotoImage((img_data).resize((250, 250), Image.Resampling.LANCZOS))
+      return img
 
-    # Define a method to handle button click events
     def on_button_clicked(self, cell):
-        # Create a DetailWindow instance to display details of the clicked cell
-        detail_window = DetailWindow(self.root, cell.title, cell.image_tk, cell.description)
+        detail_window = DetailWindow(cell)
 
-    # Constructor method for the MainWindow class
-    def __init__(self, root):
-        # Set the window title
+    
+    def __init__(self, root, json_data):
         root.title("MainWindow")
-        self.root = root  # Store a reference to the main window
+        self.root = root
 
-        # Create a list of CatalogCell instances
-        self.cells = [
-            CatalogCell("BoyDinner", "catalog/data/unedited/BoyDinner.jpg",
-                        "Average boy dinner, watching Sam Sulek and having an awesome dinner"),
-            CatalogCell("mi amigo dice", "catalog/data/unedited/mi amigo dice.jpg",
-                        "Mi amigo dice meme, incredible meme (never saw it in my life, found it on Google)"),
-            CatalogCell("Napoleon", "catalog/data/unedited/Napoleon.jpg",
-                        "There's nothing we can do, Napoleon meme shows up 32410253 times on Tiktok"),
-            CatalogCell("Tenemos", "catalog/data/unedited/Tenemos.png",
-                        "Typical communist meme, quite funny and it's all over Tiktok"),
-            CatalogCell("We love we live we", "catalog/data/unedited/We love we live we.jpg",
-                        "My buddy шайлушай, a tiresome meme that shows up 20419439 times")
-        ]
+        self.cell_frame = tk.Frame(self.root)
+        self.cell_frame.grid(row=0, column=0, padx=10, pady=10)
 
-        # Create labels with images and titles for each cell and bind a click event to each label
-        for i, cell in enumerate(self.cells):
-            label = ttk.Label(root, image=cell.image_tk, text=cell.title, compound=tk.BOTTOM)
-            label.grid(row=i, column=0)  # Place the label in the window
-            # Bind a left-click event to the label and pass the corresponding cell to the event handler
-            label.bind("<Button-1>", lambda event, celda=cell: self.on_button_clicked(celda))
+        self.cell_list = [] 
+        for i, data in enumerate(json_data):
+            name = data["name"] 
+            descripcion = data["description"]
+            url = data["image_url"]
+            imagen = self.load_image_from_url(url)
+
+            cell = CatalogCell(name, descripcion, url, imagen) 
+            self.cell_list.append(cell)
+
+            label = Label(self.cell_frame, image=cell.imagen, text=name, compound=tk.BOTTOM)
+            label.grid(row=i, column=0, sticky="nsew")
+            label.bind("<Button-1>", lambda event, cell=cell: self.on_button_clicked(cell))
+
+        for i in range(len(self.cell_list)):
+            self.cell_frame.grid_rowconfigure(i, weight=1)

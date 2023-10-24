@@ -5,12 +5,8 @@ from PIL import Image, ImageTk
 
 # Define a class for a catalog cell
 class CatalogCell:
-    def __init__(self, title, path, description):
-        self.title = title
-        self.path = path
-        self.description = description
-
-        # Resize the image
-        image = Image.open(self.path)
-        image = image.resize((150, 150), Image.LANCZOS)
-        self.image_tk = ImageTk.PhotoImage(image)
+    def __init__(self, name, descripcion, image_url, imagen):
+        self.name = name
+        self.descripcion = descripcion
+        self.image_url = image_url
+        self.imagen = imagen   

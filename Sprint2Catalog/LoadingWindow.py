@@ -2,10 +2,12 @@ import tkinter as tk
 import threading
 from PIL import Image, ImageTk
 import requests
-from MainWindow import MainWindow
+from window import MainWindow
 
 class LoadingWindow:
     def __init__(self, root):
+        self.finished = False
+        self.json_data = []
         root.title("LoadingWindow")
         self.root = root
         self.root.title ("Cargando...")
@@ -28,7 +30,7 @@ class LoadingWindow:
 
         self.thread = threading.Thread(target= self.fetch_json_data)
         self.thread.start()
-
+        self.check_thread()
 
     def draw_progress_circle(self, progress):
         self.canvas.delete("progress")
@@ -46,17 +48,11 @@ class LoadingWindow:
         self.draw_progress_circle(self.progress)
         self.root.after(4, self.update_progress_circle)
 
-
-    def launch_main_window(json_data):
-        root = tk.Tk()
-        app = MainWindow(root,json_data)
-        root.mainloop()
-
     def fetch_json_data(self):
         response = requests.get("https://raw.githubusercontent.com/DiegoCoira/DI/main/Sprint2ApiRest/catalog.json")
         if response.status_code == 200:
-            json_data = response.json()
-            launch_main_window(json_data)
+            self.json_data = response.json()
+            self.finished = True
 
     def check_thread(self):
         if self.finished:
@@ -64,3 +60,9 @@ class LoadingWindow:
             launch_main_window(self.json_data)
         else:
             self.root.after(100, self.check_thread)
+
+
+def launch_main_window(json_data):
+    root = tk.Tk()
+    app = MainWindow(root,json_data)
+    root.mainloop()
