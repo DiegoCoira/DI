@@ -11,6 +11,10 @@ import requests
 # Define a class called MainWindow
 class MainWindow():
     
+    def on_button_clicked2(self):
+      messagebox.showinfo("Acerca del desarrolador", "Hola")
+    
+
     def load_image_from_url(self, url):
       response = requests.get(url)
       img_data = Image.open(BytesIO(response.content))
@@ -48,3 +52,13 @@ class MainWindow():
           y = (root.winfo_screenheight() - root.winfo_reqheight()) / 2
           root.geometry(f"+{int(x)}+{int(y)}")
 
+      
+      barra_menus = tk.Menu() ## Instanciamos la barra
+      menu_archivo = tk.Menu(barra_menus, tearoff=False) ## 
+        
+      menu_archivo.add_command(label="Acerca de", command=self.on_button_clicked2) ##
+      barra_menus.add_cascade(menu=menu_archivo, label="Ayuda")
+      root.config(menu=barra_menus)
+
+
+  
