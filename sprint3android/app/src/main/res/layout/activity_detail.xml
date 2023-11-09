@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Inicio del archivo de diseño XML -->
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailActivity">
-
+    <!-- Se abre un ConstraintLayout como contenedor principal -->
 
     <TextView
         android:id="@+id/titulo"
@@ -17,6 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+        <!-- Se añade un TextView con ID "titulo" -->
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView"
@@ -30,6 +34,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+        <!-- Se añade una CircleImageView con ID "imageView" -->
 
     <TextView
         android:id="@+id/descripcion"
@@ -44,6 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+        <!-- Se añade un TextView con ID "descripcion" -->
 
     <Button
         android:id="@+id/meGusta"
@@ -56,5 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent" />
+        <!-- Se añade un Button con ID "meGusta" -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+<!-- Se cierra el ConstraintLayout principal -->
