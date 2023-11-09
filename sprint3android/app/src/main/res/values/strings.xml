@@ -1,11 +1,18 @@
 <resources>
+    <!-- Nombre de la aplicación -->
     <string name="app_name">My Catalog</string>
+
+    <!-- Texto para abrir y cerrar el menú de navegación -->
     <string name="navigation_drawer_open">Abrir menú</string>
     <string name="navigation_drawer_close">Cerrar menú</string>
+
+    <!-- Información adicional -->
     <string name="informacion">Información extra</string>
+
+    <!-- Aviso de derechos de autor -->
     <string name="copyright">© Ania Blanco\n</string>
 
+    <!-- Etiquetas para fragmentos -->
     <string name="CatalogFragment">Catálogo.</string>
     <string name="AboutFragment">About.</string>
-
 </resources>
