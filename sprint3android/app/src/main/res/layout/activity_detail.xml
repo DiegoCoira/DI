@@ -4,54 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CatalogActivity">
+    tools:context=".DetailActivity">
+
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:textSize="24sp"
+        android:text="Guts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="88dp"
         android:src="@drawable/image"
         app:civ_border_color="#FF000000"
         app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/meGustaButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Me Gusta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
-
-    <TextView
-        android:id="@+id/tituloTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:text="Título Grande"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/descripcionTextView"
-        android:layout_width="0dp"
+        android:id="@+id/descripcion"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="176dp"
         android:gravity="center"
-        android:text="La imagen de 'Berserk' es distintiva por su estilo artístico detallado y oscuro, que contribuye a la sensación de desesperación y brutalidad que caracteriza la serie. A lo largo de los años, 'Berserk' ha ganado una base de seguidores apasionados y se ha convertido en una obra icónica dentro del género del manga y el anime."
+        android:text="Hace poco compré este manga y tenía grandes expectativas que cumplió. Ahora estoy leyendo el resto de la saga y me parece una obra maestra "
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/meGustaButton" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/meGusta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="264dp"
+        android:text="Me Gusta"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.442"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
