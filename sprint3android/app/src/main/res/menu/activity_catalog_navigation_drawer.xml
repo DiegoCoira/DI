@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Inicio del archivo de menú XML -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+    <!-- Se abre un menú -->
 
+    <!-- Grupo de elementos con comportamiento de selección única -->
     <group android:checkableBehavior="single">
 
+        <!-- Elemento de menú para el fragmento CatalogFragment -->
         <item
             android:id="@+id/CatalogFragment"
             android:title="Catalog"
             android:icon="@drawable/image"/>
+            <!-- Icono asociado al elemento -->
+
     </group>
 
+    <!-- Elemento de menú con subelementos -->
     <item android:title="@string/informacion">
+        <!-- Título del elemento de menú -->
+        
+        <!-- Submenú -->
         <menu>
+
+            <!-- Grupo de elementos con comportamiento de selección única -->
             <group android:checkableBehavior="single">
+
+                <!-- Elemento de menú para el fragmento AboutFragment -->
                 <item
                     android:id="@+id/AboutFragment"
                     android:title="About"
                     android:icon="@drawable/image"/>
+                    <!-- Icono asociado al elemento -->
+
             </group>
         </menu>
     </item>
-
 
 </menu>
