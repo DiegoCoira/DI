@@ -5,21 +5,27 @@
     android:id="@+id/nav"
     app:startDestination="@id/CatalogActivity">
 
+    <!-- Primer fragmento -->
     <fragment
         android:id="@+id/CatalogActivity"
         android:name="com.example.mycatalog.CatalogFragment"
         android:label="@string/CatalogFragment"
         tools:layout="@layout/fragment_catalog">
+
+        <!-- Argumento para el fragmento -->
         <argument
             android:defaultValue="@string/CatalogFragment"
             app:argType="reference" />
     </fragment>
 
+    <!-- Segundo fragmento -->
     <fragment
         android:id="@+id/AboutActivity"
         android:name="com.example.mycatalog.CatalogFragment"
         android:label="@string/AboutFragment"
         tools:layout="@layout/fragment_catalog">
+
+        <!-- Argumento para el fragmento -->
         <argument
             android:defaultValue="@string/AboutFragment"
             app:argType="reference" />
