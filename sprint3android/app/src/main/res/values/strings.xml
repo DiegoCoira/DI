@@ -9,9 +9,6 @@
     <!-- Información adicional -->
     <string name="informacion">Información extra</string>
 
-    <!-- Aviso de derechos de autor -->
-    <string name="copyright">© Ania Blanco\n</string>
-
     <!-- Etiquetas para fragmentos -->
     <string name="CatalogFragment">Catálogo.</string>
     <string name="AboutFragment">About.</string>
