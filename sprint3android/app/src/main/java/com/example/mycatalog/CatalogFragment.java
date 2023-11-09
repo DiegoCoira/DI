@@ -12,33 +12,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 public class CatalogFragment extends Fragment {
     private Context context;
 
-    // El siguiente método ayuda a crear una nueva instancia de CatalogFragment
+    // Este método ayuda a crear una nueva instancia de CatalogFragment
     public static CatalogFragment newInstance() {
         CatalogFragment frag = new CatalogFragment();
         return frag;
     }
 
-    // Este método a adjuntar el fragmento con la actividad.
+    // Este método se ejecuta al adjuntar el fragmento a la actividad.
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         this.context = context;
     }
 
-    // El siguiente método crea y devuelve la vista (layout) del fragmento.
+    // Este método crea y devuelve la vista (layout) del fragmento.
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         // Se infla el diseño del fragmento utilizando el LayoutInflater.
-
         // "Inflar el diseño" es el proceso de convertir un xml de diseño en objetos visuales reales para mostrar en la pantalla de la aplicación.
-
         // El tercer argumento "false" indica que no se debe adjuntar el diseño al contenedor "container" inmediatamente.
         // En su lugar, se infla solo para obtener una referencia a la vista del fragmento que se devolverá.
 
