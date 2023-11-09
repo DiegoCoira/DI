@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
 }
-
+ 
 android {
     namespace = "com.example.mycatalog"
     compileSdk = 34
