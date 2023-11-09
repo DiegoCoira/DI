@@ -1,21 +1,27 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Define un estilo base para la aplicación -->
     <style name="Base.Theme.MyCatalog" parent="Theme.Material3.DayNight.NoActionBar">
-
     </style>
 
+    <!-- Define un tema personalizado basado en el estilo base -->
     <style name="Theme.MyCatalog" parent="Base.Theme.MyCatalog" />
-
+    
+    <!-- Define el tema principal de la aplicación -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primaryDark</item>
-        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.PrimarySurface</item>
-        <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item>
+        <item name="colorPrimary">@color/primary</item> <!-- Color primario de la aplicación -->
+        <item name="colorPrimaryDark">@color/primaryDark</item> <!-- Color primario oscuro -->
+        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.PrimarySurface</item> <!-- Estilo de la barra de herramientas -->
+        <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item> <!-- Estilo de la flecha del cajón de navegación -->
     </style>
 
+    <!-- Define el estilo de la flecha del cajón de navegación -->
     <style name="AppTheme.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
-        <item name="color">@android:color/white</item>
+        <item name="color">@android:color/white</item> <!-- Color de la flecha del cajón de navegación -->
     </style>
 
+    <!-- Define un color llamado "primary" -->
     <color name="primary">#007ACC</color>
+
+    <!-- Define un color llamado "primaryDark" -->
     <color name="primaryDark">#333333</color>
 </resources>
