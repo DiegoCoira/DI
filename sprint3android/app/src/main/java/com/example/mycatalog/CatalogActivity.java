@@ -16,6 +16,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class CatalogActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
     private DrawerLayout drawerLayout;
 
     @Override
@@ -30,15 +31,12 @@ public class CatalogActivity extends AppCompatActivity
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
-
-        drawerLayout.addDrawerListener(toggle); // Agrega un oyente al cajón de navegación para sincronizar su estado con el ActionBar.
+        drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
-
     }
-
 
     @Override
     public void onBackPressed() {
