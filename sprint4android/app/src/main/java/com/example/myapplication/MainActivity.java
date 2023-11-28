@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        // Respuesta JSON
 
                         try {
                             for (int i = 0; i < response.length(); i++) {
@@ -56,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
                                 itemList.add(item);
                             }
 
-                            MemesRecicleViewAdapter myAdapter = new MemesRecicleViewAdapter(itemList, MainActivity.this);
-                            recyclerView.setAdapter(myAdapter);
+                            MemesRecicleViewAdapter MemesRecicleViewAdapter = new MemesRecicleViewAdapter(itemList, MainActivity.this);
+                            recyclerView.setAdapter(MemesRecicleViewAdapter);
                             recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
                         } catch (JSONException e) {

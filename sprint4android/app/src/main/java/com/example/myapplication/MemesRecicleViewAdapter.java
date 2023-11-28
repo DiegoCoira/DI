@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +48,9 @@ public class MemesRecicleViewAdapter extends RecyclerView.Adapter<MemesRecicleVi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("Name", item.getName());
+                context.startActivity(intent);
             }
         });
     }
