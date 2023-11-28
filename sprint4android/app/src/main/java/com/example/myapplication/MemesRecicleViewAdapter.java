@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.myapplication.Memes;
-import com.example.myapplication.R;
+
 
 import java.util.List;
 
@@ -24,7 +22,7 @@ public class MemesRecicleViewAdapter extends RecyclerView.Adapter<MemesRecicleVi
     private final List<Memes> memesList;
     private final Context context;
 
-    public MemesRecicleViewAdapter(List<Memes> memesList, Activity activity) {
+    public MemesRecicleViewAdapter (List<Memes> memesList, Activity activity) {
         this.memesList = memesList;
         this.context = activity;
     }
@@ -38,18 +36,19 @@ public class MemesRecicleViewAdapter extends RecyclerView.Adapter<MemesRecicleVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Memes item = memesList.get(position);
+        Memes  item = memesList.get(position);
 
-        holder.Title.setText(item.getName());
-        holder.Description.setText(item.getDescripcion());
-
-        Glide.with(context).load(item.getImage_url()).into(holder.Image);
+        holder.itemTitle.setText(item.getName());
+        Glide.with(context).load(item.getImage_url()).into(holder.itemImage);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Al hacer clic en la celda, abrir la DetailActivity y pasar los datos
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("Name", item.getName());
+                intent.putExtra("name", item.getName());
+                intent.putExtra("image_url", item.getImage_url());
+                intent.putExtra("description", item.getDescripcion());
                 context.startActivity(intent);
             }
         });
@@ -61,16 +60,13 @@ public class MemesRecicleViewAdapter extends RecyclerView.Adapter<MemesRecicleVi
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        ImageView Image;
-        TextView Title;
-        TextView Description;
+        ImageView itemImage;
+        TextView itemTitle;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            Image = itemView.findViewById(R.id.itemImageView);
-            Title = itemView.findViewById(R.id.itemNameTextView);
-            Description = itemView.findViewById(R.id.itemDescriptionTextView);
+            itemImage = itemView.findViewById(R.id.itemImageView);
+            itemTitle = itemView.findViewById(R.id.itemNameTextView);
         }
     }
-
 }
