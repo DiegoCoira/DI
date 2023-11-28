@@ -6,13 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -23,14 +22,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private Activity activity=this;
+
     private RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recyclerView);
+
+        petition();
+    }
+
+    private void petition() {
+
+        List<Memes> itemList = new ArrayList<>();
 
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET,
@@ -39,32 +46,32 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        // Respuesta JSON
 
-                        List<Memes> allTheGames = new ArrayList<>();
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
-                                JSONObject game = response.getJSONObject(i);
-                                Memes data = new Memes(game);
-                                allTheGames.add(data);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                        try {
+                            for (int i = 0; i < response.length(); i++) {
+                                JSONObject jsonItem = response.getJSONObject(i);
+
+                                Memes item = new Memes(jsonItem);
+                                itemList.add(item);
                             }
+
+                            MemesRecicleViewAdapter myAdapter = new MemesRecicleViewAdapter(itemList, MainActivity.this);
+                            recyclerView.setAdapter(myAdapter);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-
-                        MemesRecicleViewAdapter adapter = new MemesRecicleViewAdapter(allTheGames, activity);
-
-                        recyclerView.setAdapter(adapter);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(activity));
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(activity, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        error.printStackTrace();
                     }
-                }
-        );
-        RequestQueue queue = Volley.newRequestQueue(this);
-        queue.add(request);
+                });
+        Volley.newRequestQueue(this).add(request);
     }
+
 }

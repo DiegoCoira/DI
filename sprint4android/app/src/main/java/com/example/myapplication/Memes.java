@@ -12,12 +12,6 @@ public class Memes {
     public String getDescripcion() {return descripcion;}
     public String getImage_url() {return image_url;}
 
-    public Memes(String name, String descripcion, String image_url){
-        this.name=name;
-        this.descripcion=descripcion;
-        this.image_url=image_url;
-    }
-
     public Memes(JSONObject json){
         try{
             this.name = json.getString("name");
